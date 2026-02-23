@@ -4,90 +4,372 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Demo Website - Welcome</title>
+    <title>Professional Portal - Login & Dashboard</title>
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <!-- Header/Navigation -->
-    <header>
-        <nav>
-            <h1>🚀 Demo Site</h1>
-            <div>
-                <a href="#home">Home</a>
-                <a href="#features">Features</a>
-                <a href="#about">About</a>
-                <a href="#contact">Contact</a>
+    <!-- Login Page -->
+    <div id="loginPage" class="login-container">
+        <div class="login-box">
+            <div class="login-header">
+                <h1>🔐 ProPortal</h1>
+                <p>Professional Management System</p>
             </div>
-        </nav>
-    </header>
 
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <h2>Welcome to Our Demo Website</h2>
-        <p>A simple, beautiful showcase of web development</p>
-        <button class="btn">Get Started</button>
-    </section>
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="email">Email Address</label>
+                    <input type="email" id="email" name="email" placeholder="user@example.com" required>
+                </div>
 
-    <!-- Features Section -->
-    <section class="features" id="features">
-        <div class="features-grid">
-            <div class="feature-card">
-                <h3>⚡ Fast</h3>
-                <p>Lightning-fast performance optimized for speed and efficiency</p>
-            </div>
-            <div class="feature-card">
-                <h3>📱 Responsive</h3>
-                <p>Works perfectly on all devices - desktop, tablet, and mobile</p>
-            </div>
-            <div class="feature-card">
-                <h3>🎨 Beautiful</h3>
-                <p>Modern design with smooth animations and great user experience</p>
-            </div>
-            <div class="feature-card">
-                <h3>🔒 Secure</h3>
-                <p>Built with security best practices in mind</p>
-            </div>
-            <div class="feature-card">
-                <h3>🛠️ Easy to Use</h3>
-                <p>Intuitive interface that's simple and straightforward</p>
-            </div>
-            <div class="feature-card">
-                <h3>🌍 Global</h3>
-                <p>Available worldwide with excellent support</p>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" placeholder="••••••••" required>
+                </div>
+
+                <div class="form-options">
+                    <label class="checkbox">
+                        <input type="checkbox"> Remember me
+                    </label>
+                    <a href="#" class="forgot-link">Forgot Password?</a>
+                </div>
+
+                <button type="submit" class="btn-login">Sign In</button>
+
+                <div class="login-footer">
+                    <p>Don't have an account? <a href="#" class="signup-link">Sign up here</a></p>
+                </div>
+            </form>
+
+            <div class="demo-credentials">
+                <p><strong>Demo Credentials:</strong></p>
+                <p>Email: <code>demo@example.com</code></p>
+                <p>Password: <code>demo123</code></p>
             </div>
         </div>
-    </section>
+    </div>
 
-    <!-- About Section -->
-    <section class="about" id="about">
-        <div class="about-content">
-            <div class="about-text">
-                <h2>About Us</h2>
-                <p>We create beautiful, functional websites that help businesses succeed online. Our team is dedicated
-                    to delivering high-quality web solutions with attention to detail and user experience.</p>
-                <p style="margin-top: 20px;">This demo website showcases modern web design practices including
-                    responsive layouts, smooth animations, and clean code architecture.</p>
+    <!-- Dashboard Page -->
+    <div id="dashboardPage" class="dashboard-container" style="display: none;">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <div class="sidebar-header">
+                <h2>🔐 ProPortal</h2>
+                <button class="menu-toggle" onclick="toggleMenu()">☰</button>
             </div>
-            <div>
-                <p style="font-size: 100px; text-align: center;">💻</p>
+
+            <nav class="sidebar-nav">
+                <a href="#dashboard" class="nav-item active" onclick="showDashboard()">
+                    <span>📊</span> Dashboard
+                </a>
+                <a href="#profile" class="nav-item" onclick="showProfile()">
+                    <span>👤</span> Profile
+                </a>
+                <a href="#analytics" class="nav-item" onclick="showAnalytics()">
+                    <span>📈</span> Analytics
+                </a>
+                <a href="#settings" class="nav-item" onclick="showSettings()">
+                    <span>⚙️</span> Settings
+                </a>
+                <a href="#" class="nav-item logout" onclick="logout()">
+                    <span>🚪</span> Logout
+                </a>
+            </nav>
+        </aside>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <!-- Header -->
+            <header class="dashboard-header">
+                <div class="header-left">
+                    <h1 id="pageTitle">Dashboard</h1>
+                </div>
+                <div class="header-right">
+                    <div class="user-info">
+                        <span id="userName">User</span>
+                        <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Ccircle cx='12' cy='12' r='10' fill='%23667eea'/%3E%3Ctext x='12' y='16' text-anchor='middle' fill='white' font-size='12' font-weight='bold'%3EU%3C/text%3E%3C/svg%3E"
+                            alt="Profile">
+                    </div>
+                </div>
+            </header>
+
+            <!-- Dashboard Content -->
+            <div class="content">
+                <!-- Dashboard Section (default) -->
+                <section id="dashboardSection" class="content-section active">
+                    <div class="welcome-card">
+                        <h2>Welcome, <span id="userGreeting">User</span>! 👋</h2>
+                        <p>You have successfully logged in to the professional portal.</p>
+                    </div>
+
+                    <div class="stats-grid">
+                        <div class="stat-card">
+                            <div class="stat-icon">📦</div>
+                            <h3>Total Projects</h3>
+                            <p class="stat-number">12</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">✅</div>
+                            <h3>Completed Tasks</h3>
+                            <p class="stat-number">48</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">⏳</div>
+                            <h3>Pending Tasks</h3>
+                            <p class="stat-number">8</p>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-icon">👥</div>
+                            <h3>Team Members</h3>
+                            <p class="stat-number">15</p>
+                        </div>
+                    </div>
+
+                    <div class="dashboard-grid">
+                        <div class="dashboard-card">
+                            <h3>Recent Activity</h3>
+                            <ul class="activity-list">
+                                <li>✓ Project Alpha completed</li>
+                                <li>✓ Team meeting scheduled</li>
+                                <li>✓ New client onboarded</li>
+                                <li>✓ Server maintenance completed</li>
+                            </ul>
+                        </div>
+
+                        <div class="dashboard-card">
+                            <h3>Quick Links</h3>
+                            <div class="quick-links">
+                                <a href="#" class="link-btn">Create Project</a>
+                                <a href="#" class="link-btn">View Reports</a>
+                                <a href="#" class="link-btn">Team Settings</a>
+                                <a href="#" class="link-btn">Documentation</a>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Profile Section -->
+                <section id="profileSection" class="content-section">
+                    <div class="profile-card">
+                        <div class="profile-header">
+                            <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ccircle cx='50' cy='50' r='50' fill='%23667eea'/%3E%3Ctext x='50' y='65' text-anchor='middle' fill='white' font-size='40' font-weight='bold'%3EU%3C/text%3E%3C/svg%3E"
+                                alt="Profile" class="profile-pic">
+                            <div class="profile-info">
+                                <h2 id="profileName">Demo User</h2>
+                                <p id="profileEmail">demo@example.com</p>
+                            </div>
+                        </div>
+
+                        <form class="profile-form">
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>First Name</label>
+                                    <input type="text" value="Demo" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Last Name</label>
+                                    <input type="text" value="User" disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-row">
+                                <div class="form-group">
+                                    <label>Email</label>
+                                    <input type="email" value="demo@example.com" disabled>
+                                </div>
+                                <div class="form-group">
+                                    <label>Phone</label>
+                                    <input type="tel" value="+1 (555) 123-4567" disabled>
+                                </div>
+                            </div>
+
+                            <div class="form-group">
+                                <label>Department</label>
+                                <input type="text" value="Engineering" disabled>
+                            </div>
+                        </form>
+                    </div>
+                </section>
+
+                <!-- Analytics Section -->
+                <section id="analyticsSection" class="content-section">
+                    <div class="analytics-grid">
+                        <div class="chart-card">
+                            <h3>Monthly Performance</h3>
+                            <p style="color: #999; font-size: 14px; margin-top: 20px;">Visual analytics would be
+                                displayed here with charts and graphs</p>
+                            <div
+                                style="margin-top: 30px; padding: 20px; background: #f0f0f0; border-radius: 5px; text-align: center;">
+                                <p>📊 Chart Placeholder</p>
+                            </div>
+                        </div>
+
+                        <div class="chart-card">
+                            <h3>Project Distribution</h3>
+                            <p style="color: #999; font-size: 14px; margin-top: 20px;">Project completion rates and
+                                metrics</p>
+                            <div
+                                style="margin-top: 30px; padding: 20px; background: #f0f0f0; border-radius: 5px; text-align: center;">
+                                <p>📈 Chart Placeholder</p>
+                            </div>
+                        </div>
+                    </div>
+                </section>
+
+                <!-- Settings Section -->
+                <section id="settingsSection" class="content-section">
+                    <div class="settings-card">
+                        <h3>Account Settings</h3>
+                        <div class="settings-group">
+                            <label class="toggle-label">
+                                <input type="checkbox" checked> Email Notifications
+                            </label>
+                            <label class="toggle-label">
+                                <input type="checkbox" checked> Two-Factor Authentication
+                            </label>
+                            <label class="toggle-label">
+                                <input type="checkbox"> Marketing Emails
+                            </label>
+                        </div>
+
+                        <h3 style="margin-top: 30px;">Privacy Settings</h3>
+                        <div class="settings-group">
+                            <label class="toggle-label">
+                                <input type="checkbox" checked> Show Profile Publicly
+                            </label>
+                            <label class="toggle-label">
+                                <input type="checkbox"> Allow Team Access
+                            </label>
+                        </div>
+
+                        <div style="margin-top: 30px;">
+                            <button class="btn-save">💾 Save Changes</button>
+                            <button class="btn-danger" style="margin-left: 10px;">🗑️ Delete Account</button>
+                        </div>
+                    </div>
+                </section>
             </div>
-        </div>
-    </section>
 
-    <!-- Contact Section -->
-    <section class="container" id="contact">
-        <h2 style="color: #667eea; margin-bottom: 30px;">Get In Touch</h2>
-        <p style="font-size: 18px;">Have any questions? We'd love to hear from you!</p>
-        <p style="margin-top: 20px;">Email: <strong>hello@demo.com</strong></p>
-        <p>Phone: <strong>+1 (555) 123-4567</strong></p>
-    </section>
+            <!-- Footer -->
+            <footer class="dashboard-footer">
+                <p>&copy; 2026 ProPortal. All rights reserved. | <a href="#">Privacy Policy</a> | <a href="#">Terms of
+                        Service</a></p>
+            </footer>
+        </main>
+    </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2026 Demo Website. All rights reserved.</p>
-        <p>Created with ❤️ for learning and demo purposes</p>
-    </footer>
+    <script>
+        // Demo users database
+        const users = {
+            'demo@example.com': {
+                password: 'demo123',
+                name: 'Demo User'
+            }
+        };
+
+        // Login form submission
+        document.getElementById('loginForm').addEventListener('submit', function (e) {
+            e.preventDefault();
+
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+
+            // Validate credentials
+            if (users[email] && users[email].password === password) {
+                // Login successful
+                loginUser(email, users[email].name);
+            } else {
+                alert('Invalid email or password!');
+            }
+        });
+
+        function loginUser(email, name) {
+            // Store user session
+            localStorage.setItem('userEmail', email);
+            localStorage.setItem('userName', name);
+
+            // Update UI
+            document.getElementById('userName').textContent = name.split(' ')[0];
+            document.getElementById('userGreeting').textContent = name.split(' ')[0];
+            document.getElementById('profileName').textContent = name;
+            document.getElementById('profileEmail').textContent = email;
+
+            // Show dashboard
+            document.getElementById('loginPage').style.display = 'none';
+            document.getElementById('dashboardPage').style.display = 'flex';
+
+            // Reset form
+            document.getElementById('loginForm').reset();
+        }
+
+        function logout() {
+            localStorage.removeItem('userEmail');
+            localStorage.removeItem('userName');
+            document.getElementById('dashboardPage').style.display = 'none';
+            document.getElementById('loginPage').style.display = 'flex';
+            document.getElementById('email').focus();
+        }
+
+        function toggleMenu() {
+            const sidebar = document.querySelector('.sidebar');
+            sidebar.classList.toggle('active');
+        }
+
+        function showDashboard() {
+            showSection('dashboardSection');
+            document.getElementById('pageTitle').textContent = 'Dashboard';
+            updateNav('dashboard');
+        }
+
+        function showProfile() {
+            showSection('profileSection');
+            document.getElementById('pageTitle').textContent = 'Profile';
+            updateNav('profile');
+        }
+
+        function showAnalytics() {
+            showSection('analyticsSection');
+            document.getElementById('pageTitle').textContent = 'Analytics';
+            updateNav('analytics');
+        }
+
+        function showSettings() {
+            showSection('settingsSection');
+            document.getElementById('pageTitle').textContent = 'Settings';
+            updateNav('settings');
+        }
+
+        function showSection(sectionId) {
+            // Hide all sections
+            document.querySelectorAll('.content-section').forEach(section => {
+                section.classList.remove('active');
+            });
+            // Show selected section
+            document.getElementById(sectionId).classList.add('active');
+        }
+
+        function updateNav(active) {
+            document.querySelectorAll('.nav-item').forEach(item => {
+                item.classList.remove('active');
+            });
+            for (let link of document.querySelectorAll('.nav-item')) {
+                if (link.textContent.toLowerCase().includes(active)) {
+                    link.classList.add('active');
+                    break;
+                }
+            }
+        }
+
+        // Check if user is already logged in
+        window.addEventListener('load', function () {
+            const userEmail = localStorage.getItem('userEmail');
+            const userName = localStorage.getItem('userName');
+            if (userEmail && userName) {
+                loginUser(userEmail, userName);
+            }
+        });
+    </script>
 </body>
 
 </html>
